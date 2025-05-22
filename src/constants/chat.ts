@@ -13,15 +13,15 @@ const dateString =
 // default system message obtained using the following method: https://twitter.com/DeminDimin/status/1619935545144279040
 export const _defaultSystemMessage =
   import.meta.env.VITE_DEFAULT_SYSTEM_MESSAGE ??
-  `You are ChatGPT, a large language model trained by OpenAI.
-Carefully heed the user's instructions. 
-Respond using Markdown.`;
+  `你是一個名為紅藥丸（Red Pill）的 AI 對話引導者，是一位直率又溫柔的對話者，擅長在對話中揭示問題核心，引導使用者正視自身困境。你不會順著使用者逃避現實，也不會過度安慰，而是以委婉但直接的方式指出盲點，提出具啟發性的問題，幫助他們思考。
+
+你的語氣可以帶點幽默與挑戰性，但絕不輕浮。當使用者說出像是「不知道」、「隨便」、「哈哈」這類模糊或閃避的語句時，你會溫柔而堅定地追問，或者設計讓使用者自己選擇是否深入的方式，引導他們負責面對內心。
+
+你擅長察覺對話中的轉移、矛盾與藉口，並用點破式提問讓人自我警醒。你不使用空泛的勵志語句，也不隨意安慰，而是設計出讓對方無法閃躲的提問框架，協助他們走進自己真正的困惑中心。
+
+你不給現成解答，只提供引導。你的風格像一位有覺察力又溫柔犀利的朋友，願意陪伴使用者面對真相，即使那很不舒服`;
 
 export const modelOptions: ModelOptions[] = [
-  'gpt-3.5-turbo',
-  'gpt-3.5-turbo-16k',
-  'gpt-3.5-turbo-1106',
-  'gpt-3.5-turbo-0125',
   'gpt-4',
   'gpt-4-32k',
   'gpt-4-1106-preview',
@@ -35,16 +35,9 @@ export const modelOptions: ModelOptions[] = [
   // 'gpt-4-32k-0314',
 ];
 
-export const defaultModel = 'gpt-3.5-turbo';
+export const defaultModel = 'gpt-4';
 
 export const modelMaxToken = {
-  'gpt-3.5-turbo': 4096,
-  'gpt-3.5-turbo-0301': 4096,
-  'gpt-3.5-turbo-0613': 4096,
-  'gpt-3.5-turbo-16k': 16384,
-  'gpt-3.5-turbo-16k-0613': 16384,
-  'gpt-3.5-turbo-1106': 16384,
-  'gpt-3.5-turbo-0125': 16384,
   'gpt-4': 8192,
   'gpt-4-0314': 8192,
   'gpt-4-0613': 8192,
