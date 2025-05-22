@@ -8,7 +8,7 @@ import Menu from '@components/Menu';
 import useInitialiseNewChat from '@hooks/useInitialiseNewChat';
 import { ChatInterface } from '@type/chat';
 import { Theme } from '@type/theme';
-import ApiPopup from '@components/ApiPopup';
+// import ApiPopup from '@components/ApiPopup';
 import Toast from '@components/Toast';
 
 function App() {
@@ -26,25 +26,19 @@ function App() {
   }, []);
 
   useEffect(() => {
-    // legacy local storage
-    const oldChats = localStorage.getItem('chats');
-    const apiKey = localStorage.getItem('apiKey');
-    const theme = localStorage.getItem('theme');
-
-    if (apiKey) {
-      // legacy local storage
-      setApiKey(apiKey);
-      localStorage.removeItem('apiKey');
+    const envApiKey = import.meta.env.VITE_OPENAI_API_KEY;
+    if (envApiKey) {
+      setApiKey(envApiKey);
     }
 
+    const theme = localStorage.getItem('theme');
     if (theme) {
-      // legacy local storage
       setTheme(theme as Theme);
       localStorage.removeItem('theme');
     }
 
+    const oldChats = localStorage.getItem('chats');
     if (oldChats) {
-      // legacy local storage
       try {
         const chats: ChatInterface[] = JSON.parse(oldChats);
         if (chats.length > 0) {
@@ -59,7 +53,6 @@ function App() {
       }
       localStorage.removeItem('chats');
     } else {
-      // existing local storage
       const chats = useStore.getState().chats;
       const currentChatIndex = useStore.getState().currentChatIndex;
       if (!chats || chats.length === 0) {
@@ -78,7 +71,7 @@ function App() {
     <div className='overflow-hidden w-full h-full relative'>
       <Menu />
       <Chat />
-      <ApiPopup />
+      {/* <ApiPopup /> */}
       <Toast />
     </div>
   );
